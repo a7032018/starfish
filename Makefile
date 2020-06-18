@@ -105,7 +105,7 @@ starfish/REQUIREMENTS-STRICT.txt : REQUIREMENTS.txt
 	.$<-env/bin/pip install -r $@
 	.$<-env/bin/pip install -r $<
 	echo "# You should not edit this file directly.  Instead, you should edit one of the following files ($^) and run make $@" >| $@
-	.$<-env/bin/pip freeze >> $@
+	.$<-env/bin/pip freeze --all >> $@
 	rm -rf .$<-env
 
 requirements/REQUIREMENTS-%.txt : requirements/REQUIREMENTS-%.txt.in REQUIREMENTS.txt
@@ -116,7 +116,7 @@ requirements/REQUIREMENTS-%.txt : requirements/REQUIREMENTS-%.txt.in REQUIREMENT
 		.$<-env/bin/pip install -r $$src; \
 	done
 	echo "# You should not edit this file directly.  Instead, you should edit one of the following files ($<) and run make $@" >| $@
-	.$<-env/bin/pip freeze >> $@
+	.$<-env/bin/pip freeze --all >> $@
 	rm -rf .$<-env
 
 check-requirements:
